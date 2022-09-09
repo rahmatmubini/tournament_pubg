@@ -1,8 +1,8 @@
-<header class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10">
+<header class="bg-hijau  top-0 left-0 w-full flex items-center z-10">
     <div class="container">
         <div class="flex items-center justify-between relative">
             <div class="px-4">
-                <a href="#home" class="font-bold text-lg text-hijau block py-6">ToFo PUBG</a>
+                <a href="#home" class="font-bold text-lg text-white block py-6">ToFo PUBG</a>
             </div>
             <div class="flex items-center px-4">
                 <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 lg:hidden">
@@ -26,15 +26,14 @@
                     <li class="group">
                         <a href="/profile" class="text-base text-hitam py-2 mx-8 flex group-hover:text-hijau">My Profile</a>
                     </li>
-                    <li>
+                    <li class="group mt-2">
+                        <a class="" href="#">Wellcome back, {{ auth()->user()->name }}</a>
+                    </li>
+                    <li class="group ml-7 mt-2">
                         <form action="/logout" method="post">
                             @csrf
                                 <button type="submit" class="">Logout</button>
                         </form>
-                    </li>
-
-                    <li>
-                        <a class="" href="#">Wellcome back, {{ auth()->user()->name }}</a>
                     </li>
                 @else
                     <li class="nav-item ">

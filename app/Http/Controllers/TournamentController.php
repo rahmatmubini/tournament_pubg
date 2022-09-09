@@ -31,7 +31,7 @@ class TournamentController extends Controller
         }
 
         return view('tournaments', [
-            "title" => "All tournaments" . $title,
+            // "title" => "All tournaments" . $title,
             "active" => "tournaments",
             "tournaments" => Tournament::latest()->filter(request(['search', 'game', 'author']))->paginate(7)->withQueryString(),
             "slot" => Team::all()

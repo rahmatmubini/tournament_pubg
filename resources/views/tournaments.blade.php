@@ -1,8 +1,6 @@
 @extends('layouts.main')
 
 @section('container')
-    <h1 class="text-center mb-6 text-5xl font-mono font-bold">{{ $title }} </h1>
-
     <div class="row justify-content-center my-3 font-mono">
         <div class="col-md-5">
             <form action="/tournaments">
