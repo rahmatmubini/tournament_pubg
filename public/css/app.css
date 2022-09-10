@@ -560,9 +560,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 0.75rem;
   margin-right: 0.75rem;
 }
-.mx-5 {
-  margin-left: 1.25rem;
-  margin-right: 1.25rem;
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 .mt-1 {
   margin-top: 0.25rem;
@@ -633,6 +633,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .-mt-px {
   margin-top: -1px;
 }
+.ml-7 {
+  margin-left: 1.75rem;
+}
 .mt-14 {
   margin-top: 3.5rem;
 }
@@ -681,14 +684,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .ml-14 {
   margin-left: 3.5rem;
 }
-.ml-5 {
-  margin-left: 1.25rem;
+.ml-8 {
+  margin-left: 2rem;
 }
 .ml-6 {
   margin-left: 1.5rem;
-}
-.ml-7 {
-  margin-left: 1.75rem;
 }
 .block {
   display: block;
@@ -747,6 +747,27 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-7 {
   height: 1.75rem;
 }
+.h-40 {
+  height: 10rem;
+}
+.h-4 {
+  height: 1rem;
+}
+.h-10 {
+  height: 2.5rem;
+}
+.h-11 {
+  height: 2.75rem;
+}
+.h-12 {
+  height: 3rem;
+}
+.h-14 {
+  height: 3.5rem;
+}
+.h-1 {
+  height: 0.25rem;
+}
 .max-h-72 {
   max-height: 18rem;
 }
@@ -800,6 +821,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .w-1\/5 {
   width: 20%;
+}
+.w-96 {
+  width: 24rem;
 }
 .max-w-\[250px\] {
   max-width: 250px;
@@ -1044,6 +1068,13 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(234 179 8 / var(--tw-bg-opacity));
 }
+.bg-slate-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(15 23 42 / var(--tw-bg-opacity));
+}
+.bg-\[length\:200px_100px\] {
+  background-size: 200px 100px;
+}
 .fill-current {
   fill: currentColor;
 }
@@ -1173,6 +1204,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .pb-6 {
   padding-bottom: 1.5rem;
+}
+.pr-2 {
+  padding-right: 0.5rem;
 }
 .text-center {
   text-align: center;
@@ -1656,6 +1690,18 @@ body {
     margin-top: 0px;
   }
 
+  .lg\:mt-2 {
+    margin-top: 0.5rem;
+  }
+
+  .lg\:ml-8 {
+    margin-left: 2rem;
+  }
+
+  .lg\:ml-auto {
+    margin-left: auto;
+  }
+
   .lg\:block {
     display: block;
   }
@@ -1686,6 +1732,11 @@ body {
 
   .lg\:bg-transparent {
     background-color: transparent;
+  }
+
+  .lg\:bg-white {
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
   }
 
   .lg\:px-8 {
@@ -1725,6 +1776,11 @@ body {
   .lg\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .lg\:text-white {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
   }
 
   .lg\:shadow-none {
