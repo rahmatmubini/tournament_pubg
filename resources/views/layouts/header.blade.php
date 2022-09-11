@@ -5,7 +5,7 @@
                 <a href="#home" class="font-bold text-lg text-white block py-6">ToFo PUBG</a>
             </div>
             <div class="flex items-center px-4">
-                <button id="hamburger" name="hamburger" type="button" class="bg-white block absolute right-4 lg:hidden rounded">
+                <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 lg:hidden rounded">
                     <span class="hamburger-line transiton duration-300 ease-in-out origin-top-left"></span>
                     <span class="hamburger-line transiton duration-300 ease-in-out"></span>
                     <span class="hamburger-line transiton duration-300 ease-in-out origin-bottom-left"></span>
@@ -37,7 +37,6 @@
                         <a href="/login" class="nav-link text-lg lg:text-white text-hijau"><i class="bi bi-box-arrow-in-right text-lg lg:text-white text-hijau"></i> Login</a>
                     </li>
                 @endauth
-                </ul>
                 </nav>
             </div>
         </div>
