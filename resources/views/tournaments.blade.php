@@ -19,29 +19,39 @@
     </div>
 
 @if ($tournaments->count())
+{{-- hero tournament --}}
 <div class="container">
-    <div class="mb-5 mt-5">
-        <a href="#" class="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-            <img class="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="/docs/images/blog/image-4.jpg" alt="">
-            <div class="flex flex-col justify-between p-4 leading-normal">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-            </div>
-        </a>
-    </div>
-    <div class="mb-5 mt-5">
-        <a href="#" class="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-            <img class="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="/docs/images/blog/image-4.jpg" alt="">
-            <div class="flex flex-col justify-between p-4 leading-normal">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-            </div>
-        </a>
-    </div>
-</div>
+    <a href="/tournaments/{{ $tournaments[0]->slug }}" class="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
 
-<div class="container">
-    <div class="mb-5 shadow-lg w-full font-mono">
+        @if ($tournaments[0]->image)
+            <img class="object-cover w-full h-56 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ asset('storage/' . $tournaments[0]->image) }}" alt="{{ $tournaments[0]->game->name }}">
+        @else
+            <img class="object-cover w-full h-56 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="https://www.tipspintar.com/wp-content/uploads/2018/08/Wallpaper-PUBG-Mobile-1.jpg" alt="{{ $tournaments[0]->game->name }}">
+        @endif
+
+        <div class="flex flex-col justify-between p-4 leading-normal">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $tournaments[0]->title }}</h5>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here.</p>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $tournaments[0]->author->name }} in {{ $tournaments[0]->game->name }}</p>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $tournaments[0]->created_at->diffForHumans() }}</p>
+            @if ($tournaments[0]->matchDate < date('Y-m-d'))
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400" >Status : Mulai </p>
+            @elseif($tournaments[0]->matchAndDate < date('Y-m-d'))
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400" >Status : Selesai </p>
+            @endif
+        </div>
+        <section class="row">
+            <div class="w-1/2">
+                <p class="text-sm lg:text-xl mt-3 ">Mulai : {{ $tournaments[0]->matchDate }} - {{ $tournaments[0]->matchAndDate }}</p>
+                <p class="text-sm lg:text-xl">Waktu : {{ $tournaments[0]->time }}</p>
+            </div>
+            <div class="w-1/2">
+                <p class="text-sm lg:text-xl mt-3 ">Location : {{ $tournaments[0]->location }}</p>
+                <p class="text-sm lg:text-xl">{{'Slot : ' . $slot->where('tournament_id', $tournaments[0]->id)->count() . '/' . $tournaments[0]->slot }}</p>
+            </div>
+        </section>
+    </a>
+    {{-- <div class="mb-5 shadow-lg w-full font-mono">
 
         @if ($tournaments[0]->image)
             <div class="bg-black p-3">
@@ -81,7 +91,22 @@
             <a href="/tournaments/{{ $tournaments[0]->slug }}" class="text-decoration-none btn btn-primary my-3">Registration</a>
 
         </div>
+    </div> --}}
+</div>
+
+{{-- tournaments --}}
+<div class="w-full px-4 flex flex-wrap justify-center xl:10/12 xl:mx-auto">
+    @foreach ($tournaments->skip(1) as $tournament)
+    <div class="my-2 lg:my-0 lg:p-2 md:w-1/2">
+        <a href="#" class="flex  items-center bg-white rounded-lg border shadow-md flex-row w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+            <img class="object-cover rounded-t-lg h-auto w-32 lg:w-48 rounded-none rounded-l-lg" src="img/erangel.jpg" alt="">
+            <div class="flex flex-col justify-between p-4 leading-normal">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy</h5>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions.</p>
+            </div>
+        </a>
     </div>
+    @endforeach
 </div>
 
 <div class="container">
