@@ -2,7 +2,6 @@
 
 @section('container')
     <div class="row justify-content-center my-3 font-mono">
-        <div class="col-md-5">
             <form action="/tournaments">
                 @if (request('game'))
                     <input type="hidden" name="game" value="{{ request('game')}}">
@@ -10,12 +9,15 @@
                 @if (request('author'))
                     <input type="hidden" name="author" value="{{ request('author')}}">
                 @endif
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search.." name="search" value="{{ request('search') }}">
-                    <button class="shadow-md bg-blue-500 hover:bg-blue-700 text-white transition duration-100 cursor-pointer py-2 px-8 rounded" type="submit">Search</button>
+                <div class="flex input-group mb-4 w-full">
+                    <div class="w-10/12 mx-1">
+                        <input type="text" class="form-control lg:w-auto h-9 w-full border-2 rounded" placeholder=" Search.." name="search" value="{{ request('search') }}">
+                    </div>
+                    <div class="w-2/12">
+                        <button class="shadow-md bg-blue-500 hover:bg-blue-700 text-white transition duration-100 cursor-pointer h-9 rounded w-full" type="submit">Q</button>
+                    </div>
                 </div>
             </form>
-        </div>
     </div>
 
 @if ($tournaments->count())
@@ -29,22 +31,32 @@
             <img class="object-cover w-full h-56 rounded-t-lg md:h-auto md:w-96 md:rounded-none md:rounded-l-lg lg:m-2" src="https://www.tipspintar.com/wp-content/uploads/2018/08/Wallpaper-PUBG-Mobile-1.jpg" alt="{{ $tournaments[0]->game->name }}">
         @endif
 
-        <div class="flex flex-col justify-between p-4 leading-normal">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $tournaments[0]->title }}</h5>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $tournaments[0]->author->name }} == {{ $tournaments[0]->created_at->diffForHumans() }} == @if ($tournaments[0]->matchDate < date('Y-m-d'))
-                Status : Mulai
-            @elseif($tournaments[0]->matchAndDate < date('Y-m-d'))
-                Status : Selesai
-            @endif</p>
-            <div class="flex">
-            <div class="w-1/2">
-                <p class="text-sm lg:text-xl mt-3 ">Mulai : {{ $tournaments[0]->matchDate }} - {{ $tournaments[0]->matchAndDate }}</p>
-                <p class="text-sm lg:text-xl">Waktu : {{ $tournaments[0]->time }}</p>
+        <div class="flex flex-col justify-between leading-normal text-white">
+            <div class="px-4 pt-4 pb-3">
+                <h5 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $tournaments[0]->title }}</h5>
+                <small class="text-slate-400">{{ $tournaments[0]->author->name }} . {{ $tournaments[0]->created_at->diffForHumans() }}</small>
             </div>
-            <div class="w-1/2">
-                <p class="text-sm lg:text-xl mt-3 ">Location : {{ $tournaments[0]->location }}</p>
-                <p class="text-sm lg:text-xl">{{'Slot : ' . $slot->where('tournament_id', $tournaments[0]->id)->count() . '/' . $tournaments[0]->slot }}</p>
-            </div>
+            <div class="flex dark:bg-neutral-900 rounded-lg">
+                <div class="w-1/4 px-5 pb-3 pt-2 text-center">
+                    <p class="text-sm lg:text-xl font-bold text-slate-400">Mulai</p>
+                    <p class="text-sm lg:text-xl">{{ $tournaments[0]->matchDate }}</p>
+                </div>
+                <div class="w-1/4 px-5 pb-3 pt-2 text-center">
+                    <p class="text-sm lg:text-xl font-bold text-slate-400">Waktu</p>
+                    <p class="text-sm lg:text-xl">{{ $tournaments[0]->time }}</p>
+                </div>
+                <div class="w-1/4 px-5 pb-3 pt-2 text-center">
+                    <p class="text-sm lg:text-xl font-bold text-slate-400">Status</p> @if ($tournaments[0]->matchDate < date('Y-m-d'))
+                    <p class="text-sm lg:text-xl">Mulai</p>
+                    @elseif($tournaments[0]->matchAndDate < date('Y-m-d'))
+                    <p class="text-sm lg:text-xl">Selesai</p>
+                    @endif
+                    
+                </div>
+                <div class="w-1/4 px-5 pb-3 pt-2 text-center">
+                    <p class="text-sm lg:text-xl font-bold text-slate-400">Slot</p>
+                    <p class="text-sm lg:text-xl">{{$slot->where('tournament_id', $tournaments[0]->id)->count() . '/' . $tournaments[0]->slot }}</p>
+                </div>
             </div>
         </div>
             
